@@ -4,54 +4,45 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Quản trị tin tức</title>
-</head>
+</head> 
 <body>
 	<p style="text-align: right;"><a href="../admin/quan_tri_tin_tuc.html">QUẢN TRỊ TIN TỨC</a> | <a href="../admin/quan_tri_san_pham.html">QUẢN TRỊ SẢN PHẨMC</a> | <a href="../admin/quan_tri_phan_hoi.html">QUẢN TRỊ PHẢN HỒI</a></p>
 	<br><hr>
 	<h1>QUẢN LÝ BÀI VIẾT</h1>
-	<p style="text-align:right;"><img src="../img/add.jpeg" style="width: 35px; height:auto;"></p>
+	<p style="text-align:right;"><a href="../admin/them_moi_tin_tuc.php"><img src="../img/add.jpeg" style="width: 35px; height:auto;"></a></p>
 	<table>
 		<tr>
-			<td style="text-align: center; font-weight: bold;">STT</td>
+			<td style="text-align: center; font-weight: bold;">ID</td>
 			<td style="text-align: center; font-weight: bold; width: 1000px;">Tiêu đề bài viết</td>
 			<td style="text-align: center; font-weight: bold;">Lượt đọc</td>
 			<td style="text-align: center; font-weight: bold;" colspan="2">Hành động</td>
 		</tr>
+		<?php 
+			// 1. Kết nối đến MÁY CHỦ DỮ LIỆU & ĐẾN CSDL mà các bạn muôn HIỂN THỊ, THÊM, SỬA, XOÁ
+			require("../config.php");
+
+			// 2. Câu lệnh truy vấn đến bảng dữ liệu
+			$sql = "
+				SELECT * 
+				FROM tbl_tin_tuc
+				ORDER BY tin_tuc_id DESC";
+
+			// 3. Thực hiện truy vấn đến bảng dữ liệu
+			$tin_tuc = mysqli_query($ket_noi, $sql);
+
+			// 4. In kết quả ra màn hình
+			while ($row = mysqli_fetch_array($tin_tuc)) {
+		;?>
 		<tr>
-			<td>1</td>
-			<td>Mỹ phật lòng, Nga hưởng lợi từ quyết định gây tranh cãi của OPEC+</td>
-			<td>77</td>
-			<td><img src="../img/edit.png" style="width: 35px; height:auto;"></td>
-			<td><img src="../img/delete.jpeg" style="width: 35px; height:auto;"></td>
+			<td><?php echo $row["tin_tuc_id"];?></td>
+			<td><?php echo $row["tieu_de"];?></td>
+			<td><?php echo $row["so_luot_doc"];?></td>
+			<td><a href="../admin/sua_tin_tuc.php?id=<?php echo $row["tin_tuc_id"];?>"><img src="../img/edit.png" style="width: 35px; height:auto;"></a></td>
+			<td><a href="../admin/xoa_tin_tuc.php?id=<?php echo $row["tin_tuc_id"];?>"><img src="../img/delete.jpeg" style="width: 35px; height:auto;"></a></td>
 		</tr>
-		<tr>
-			<td>2</td>
-			<td>TPHCM kiến nghị cho doanh nghiệp điều chỉnh giá xăng, dầu linh hoạt</td>
-			<td>77</td>
-			<td><img src="../img/edit.png" style="width: 35px; height:auto;"></td>
-			<td><img src="../img/delete.jpeg" style="width: 35px; height:auto;"></td>
-		</tr>
-		<tr>
-			<td>3</td>
-			<td>Cổ phiếu giảm giá, nằm sàn la liệt, VN-Index giảm tiếp gần 43 điểm</td>
-			<td>88</td>
-			<td><img src="../img/edit.png" style="width: 35px; height:auto;"></td>
-			<td><img src="../img/delete.jpeg" style="width: 35px; height:auto;"></td>
-		</tr>
-		<tr>
-			<td>4</td>
-			<td>Tổng thống Ukraine kêu gọi tấn công phủ đầu, Nga cảnh báo nguy cơ thế chiến</td>
-			<td>88</td>
-			<td><img src="../img/edit.png" style="width: 35px; height:auto;"></td>
-			<td><img src="../img/delete.jpeg" style="width: 35px; height:auto;"></td>
-		</tr>
-		<tr>
-			<td>5</td>
-			<td>Tài xế gây náo loạn đường phố vì kiểu lái xe "ú òa" như say xỉn</td>
-			<td>88</td>
-			<td><img src="../img/edit.png" style="width: 35px; height:auto;"></td>
-			<td><img src="../img/delete.jpeg" style="width: 35px; height:auto;"></td>
-		</tr>
+		<?php
+			}
+		;?>
 	</table>
 </body>
 </html>
