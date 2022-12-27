@@ -18,5 +18,11 @@
 
 
 	// 5. Thông báo đã xoá thành công
-	echo "Đã xoá bản ghi thành công";
+	$url="../admin/quan_tri_tin_tuc.php";
+	echo "
+		<script type='text/javascript'>
+			window.alert('Đã XOÁ thành công');
+			window.location.href = '".$url."';
+		</script>
+	";
 ;?>
