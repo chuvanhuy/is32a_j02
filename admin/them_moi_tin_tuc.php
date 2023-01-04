@@ -1,3 +1,20 @@
+<?php 
+	// Khởi tạo phiên làm việc
+	session_start();
+
+	// Check xem bạn đã đăng nhập hay chưa?
+	// echo $_SESSION['dang_nhap']; exit();
+	if(!$_SESSION['dang_nhap']) {
+		$url1="../admin/dang_nhap.php";
+		echo "
+			<script type='text/javascript'>
+				window.alert('Bạn KHÔNG ĐƯỢC PHÉP truy cập trang này! Vui lòng đăng nhập hệ thống!');
+				window.location.href = '".$url1."';
+			</script>
+		";
+	}
+;?>
+
 <!DOCTYPE html>
 <html>
 <head>

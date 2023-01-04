@@ -29,7 +29,7 @@
 	<h1>ĐĂNG NHẬP HỆ THỐNG</h1>
 	<hr>
 	<br>
-	<form action="../admin/kiem_tra_dang_nhap.html" method="post" onsubmit="return check_du_lieu()">
+	<form action="../admin/kiem_tra_dang_nhap.php" method="post" onsubmit="return check_du_lieu()">
 		<p>Tên đăng nhập: <input type="text" name="txtUserName" id="txtUserName"></p>
 		<p>Mật khẩu: <input type="password" name="txtPassword" id="txtPassword"></p>
 		<p><button type="submit">Đăng nhập</button></p>
